@@ -20,49 +20,44 @@ const data = {
 };
 
 function loadOptions() {
-  const service = document.getElementById("service").value;
-  const options = document.getElementById("options");
+  let service = document.getElementById("service").value;
+  let options = document.getElementById("options");
 
   options.innerHTML = "";
 
   if (!data[service]) return;
 
   data[service].forEach(item => {
-    const opt = document.createElement("option");
-    opt.value = item;
+    let opt = document.createElement("option");
     opt.text = item;
-    options.appendChild(opt);
+    options.add(opt);
   });
 }
 
 function send() {
-  const service = document.getElementById("service").value;
-  const option = document.getElementById("options").value;
-  const id = document.getElementById("id").value;
+  let service = document.getElementById("service").value;
+  let option = document.getElementById("options").value;
+  let id = document.getElementById("id").value;
 
   if (!service || !option || !id) {
     alert("❌ أكمل البيانات");
     return;
   }
 
-  const message = `🔥 طلب جديد:
+  let message = `🔥 طلب جديد:
 الخدمة: ${service}
 الباقة: ${option}
 ID: ${id}
 
-💳 طرق الدفع:
-📲 بنكيلي: 47085852
-🏦 مصريفي: 43296090
-🏦 السداد: 43296090
-🏦 أمانتي: 43296090
-🏦 كليك: 43296090
+💳 بنكيلي: 47085852
+🏦 مصريفي: 47085852
+🏦 السداد: 47085852
+🏦 كليك: 47085852
 
 📸 يرجى إرسال لقطة شاشة التحويل`;
 
-  const phone = "22243296090";
-
-  // ✅ التصحيح المهم هنا
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  let phone = "22247085852";
+  let url = "https://wa.me/${phone}?text=${encodeURIComponent(message)}";
 
   window.open(url, "_blank");
 }
